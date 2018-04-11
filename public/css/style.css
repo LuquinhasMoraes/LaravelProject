@@ -1,0 +1,385 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    border: none;
+
+    -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+            -box-sizing: border-box;
+}
+
+body {
+    background: #ececec;
+    font-family: 'Lato', sans-serif;
+}
+
+section.background {
+    position: absolute;
+
+    left: 0;
+    width: calc(100% - 300px);
+    height: 100%;
+    background-image: url('../img/bg-app.jpg');   
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover; 
+}
+
+.overlay {
+    width: 100%;
+    height: 100%;
+    background: #000;
+    opacity: 0.5;
+}
+
+section.login {
+    position: absolute;
+    right: 0px;
+    padding: 30px;
+    width: 350px;
+    height: 100%;
+    background: #262ed3;
+    color: white;
+}
+
+section h1 {
+    font-size: 3.5em;
+}
+
+section h3 {
+    font-size: 0.90em;
+    font-weight: normal;
+}
+
+section p {
+    font-size: 0.90em;
+}
+
+span {
+    font-size: 0.90em;
+    font-family: 'Lato', sans-serif;
+}
+
+section h1, h3, p {
+    font-family: 'Lato', sans-serif;
+}
+
+section p {
+    margin-top: 50px;
+}
+
+section .input {
+    float: left;
+    width: 100%;
+    height: 35px;
+    border-radius: 20px;
+    padding: 5px;
+    margin-top: 8px;
+    border: none;
+}
+
+.btn-login {
+    left: 0;
+    margin-top: 10px;
+    float: left;
+    padding: 5px;
+    height: 40px;
+    width: 100px;
+    border-radius: 20px;
+    background: #1f25a3;
+    color: white;
+}
+
+.btn-login:hover {
+    border: 1px solid #fff;
+    cursor: pointer;
+}
+
+a.forget {
+    color: white;
+    float: right;
+    margin-top: 18px;
+    text-decoration: none;
+    font-size: 0.90em;
+    font-weight: normal;
+    font-family: 'Lato', sans-serif;
+}
+
+a.forget:hover {
+    text-decoration: underline;
+}
+
+/* DASHBOARD STYLE */
+
+#navegacao {
+    position: fixed;
+    float: left;
+    width: 220px;;
+    height: 100%;
+    z-index: 5px;
+    background: #fff;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.15)
+}
+
+#navegacao ul, 
+#navegacao ul li  {
+    float: left;
+    width: 100%;
+}
+
+#navegacao ul li a {
+    float: left;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #e9e9e9;
+    color: #742F8B;
+}
+
+
+
+#navegacao ul li a img {
+    position: relative;
+    float: left;
+    line-height: 20px;
+    width: 130px;
+    left: 20px;
+    top: 5px;
+}
+
+#navegacao ul li a i {
+    float: left;
+    width: 60px;
+    height: 70px;
+    border-bottom: 1px solid #e9e9e9;
+    text-align: center;
+    line-height: 70px;
+    font-size: 1.2em;
+}
+
+#navegacao ul li a h3 {
+    float: left;
+    width: 80px;
+    height: 70px;
+    line-height: 70px;
+    font-size: 1em;
+    border-bottom: 1px solid #e9e9e9;
+    font-family: 'Lato', sans-serif;
+    
+}
+
+
+#navegacao ul li a:hover{ 
+    color: #fff;
+    background: #a578b3;
+    transition: 0.3s;
+
+}
+
+#navegacao ul li a.brand:hover {
+    float: left;
+    width: 100%;
+    height: 70px;
+    border-bottom: 1px solid #e9e9e9;
+    background: #fff;
+}
+
+
+#content-view {
+    position: fixed;
+    float: left;
+    width: 100%;
+    height: 100%;
+    padding-left: 240px;
+    padding-right: 20px;
+    padding-top: 90px;
+    padding-bottom: 20px;
+    z-index: -1;
+}
+
+#header-dashboard {
+    position: fixed;
+    right: 0;
+    width: calc(100% - 220px);
+    height: 70px;
+    background: #742F8B; 
+}
+
+.page-info {
+    position: fixed;
+    left: 240px;
+    width: auto;
+    height: 70px;
+    line-height: 70px;
+}
+
+.page-info h5 {
+    font-size: 1.2em;
+    color: #fff;
+}
+
+.user-info {
+    position: fixed;
+    right: 20px;
+    width: 220px;
+    height: 70px;
+    line-height: 70px;
+}
+
+.user-info a { 
+    position: relative;
+    left: 65px;
+    color: #fff;
+    font-size: 0.9em;
+}
+
+.user-info img { 
+    
+    position: relative;
+    float: right;
+    width: 45px;
+    top: 13px;
+}
+
+/* Utilities */
+
+.alert {
+    padding: 10px;
+    width: 100%;
+    height: 50px;
+    border-radius: 5px;
+    line-height: 25px;
+    margin-bottom: 20px;
+}
+
+.alert-danger {
+    background: rgb(250, 95, 90);
+    border: 1px solid #f74d4d;
+    color: #fff;
+}
+
+.alert-success {
+    background: #E1F0D7;
+    border: 1px solid #dedede;
+    color: #5C8154;
+}
+
+.default-data {
+    float: left;
+    padding: 10px;
+    width: 100%;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    font: 400 .9em;
+    color: #7d7d7d;
+}
+
+.default-data thead { 
+    
+    text-transform: uppercase;
+    height: 35px;
+    font-size: .8em;
+    font-weight: 800;
+    text-align: left;
+    color: #5c5c5c;
+    
+
+}
+
+.default-data thead tr {
+    height: 40px;
+    border-bottom: 1px solid #d9d9d9;
+ }  
+
+ .default-data tbody tr {
+    height: 30px;
+    border-bottom: 1px solid #d9d9d9;
+ } 
+
+ /* CSS BUTTONS */
+ 
+ .float-button {
+     position: fixed;
+     right: 20px;
+     bottom: 40px;
+     width: 60px;
+     height: 60px;
+     background: #742F8B;
+     color: #fff;
+     border-radius: 30px;
+     line-height: 60px;
+     text-align: center;
+     font-size: 1.5em;
+
+ } 
+
+ .btn-list-rm {
+     float: left;
+     width: 30px;
+     height: 30px;
+     padding: 4px;
+     color: #fff;
+     background: #f74d4d;
+     border: 1px solid #e24646;
+     border-radius: 5px;
+ }
+
+ .btn-list-rm:hover {  
+    
+    cursor: pointer;
+
+  }
+
+/* CSS FORM */
+
+.form-padrao {
+    float: left;
+    width: 100%;
+}
+
+.form-padrao label {
+    float: left;
+    width: 49%;
+    height: 60px;
+    padding: 7px 15px;
+    border: 1px solid #dedede;
+    background: #fff;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.form-padrao label:nth-last-of-type(odd){
+    margin-left: 2%;
+}
+
+.form-padrao label span {
+    float: left;
+    width: 100%;
+    font: 100 .75em 'Arial';
+    color: #999;
+    padding-bottom: 7px;
+}
+
+.form-padrao label input {
+    float: left;
+    width: 100%;
+    color: #333;
+    font: 400 1em 'Arial';
+    background: transparent;
+}
+.form-padrao label.submit {
+    background: #742F8B; 
+    color: #fff;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #c7c7c7 !important;
+}
+
+.form-padrao label.submit input {
+    font-weight: 600;
+    line-height: 50px;
+    color: #fff;
+    text-transform: uppercase;
+}
