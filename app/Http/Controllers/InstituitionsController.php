@@ -91,9 +91,9 @@ class InstituitionsController extends Controller
                 $message = json_decode($request['message']);
                 // var_dump($message->name[0]); exit;
                 session()->flash('success', [
-                    'success' => $request['success'],
-                    'message' => $message->name[0],
-                    'type' => $request['type'],
+                    'success'   => $request['success'],
+                    'message'   => $message->name[0],
+                    'type'      => $request['type'],
                 ]);
 
                 return redirect()->back();

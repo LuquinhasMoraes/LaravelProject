@@ -11,6 +11,7 @@ use App\Http\Requests\GroupCreateRequest;
 use App\Http\Requests\GroupUpdateRequest;
 use App\Repositories\GroupRepository;
 use App\Validators\GroupValidator;
+use App\Services\GroupService;
 
 /**
  * Class GroupsController.
@@ -19,26 +20,16 @@ use App\Validators\GroupValidator;
  */
 class GroupsController extends Controller
 {
-    /**
-     * @var GroupRepository
-     */
+
     protected $repository;
-
-    /**
-     * @var GroupValidator
-     */
     protected $validator;
+    protected $service;
 
-    /**
-     * GroupsController constructor.
-     *
-     * @param GroupRepository $repository
-     * @param GroupValidator $validator
-     */
-    public function __construct(GroupRepository $repository, GroupValidator $validator)
+    public function __construct(GroupRepository $repository, GroupValidator $validator, GroupService $service)
     {
         $this->repository = $repository;
         $this->validator  = $validator;
+        $this->service    = $service;
     }
 
     /**
@@ -68,31 +59,24 @@ class GroupsController extends Controller
     {
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $request = $this->service->store($request->all()); 
 
-            $group = $this->repository->create($request->all());
+            session()->flash('success', [
+                'success' => $request['success'],
+                'message' => $request['message'],
+                'type'    => $request['type']
+            ]);
 
-            $response = [
-                'message' => 'Group created.',
-                'data'    => $group->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
-        } catch (ValidatorException $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessageBag()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessageBag())->withInput();
+            return redirect()->back();
+            
+        } catch (Exception $e) {
+            session()->flash('success', [
+                'success' => $request['success'],
+                'message' => $request['message'],
+                'type'    => $request['type']
+            ]);
         }
+        
     }
 
     /**
