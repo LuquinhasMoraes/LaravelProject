@@ -55,7 +55,6 @@ class DashboardController extends Controller
                 \Auth::attempt($data, false);
 
             } else {
-
                 $user = $this->repository->findWhere( ['email' => $data['email']] )->first();
 
                 if(!$user)
