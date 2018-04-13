@@ -10,6 +10,8 @@ use Prettus\Validator\Exceptions\ValidatorException;
 use App\Http\Requests\GroupCreateRequest;
 use App\Http\Requests\GroupUpdateRequest;
 use App\Repositories\GroupRepository;
+use App\Repositories\UserRepository;
+use App\Repositories\InstituitionRepository;
 use App\Validators\GroupValidator;
 use App\Services\GroupService;
 
@@ -22,14 +24,18 @@ class GroupsController extends Controller
 {
 
     protected $repository;
+    protected $instituitionRepository;
+    protected $userRepository;
     protected $validator;
     protected $service;
 
-    public function __construct(GroupRepository $repository, GroupValidator $validator, GroupService $service)
+    public function __construct(GroupRepository $repository, GroupValidator $validator, GroupService $service, InstituitionRepository $instituitionRepository, UserRepository $userRepository)
     {
-        $this->repository = $repository;
-        $this->validator  = $validator;
-        $this->service    = $service;
+        $this->repository               = $repository;
+        $this->userRepository           = $userRepository;
+        $this->instituitionRepository   = $instituitionRepository;
+        $this->validator                = $validator;
+        $this->service                  = $service;
     }
 
     /**
@@ -43,11 +49,22 @@ class GroupsController extends Controller
         $groups = $this->repository->all();
 
         return view('groups.index', compact('groups'));
-        
+
     }
 
     public function create () {
-        return view('groups.add');
+
+        $groups = $this->repository->all();
+
+        $inst_list = $this->instituitionRepository->selectBoxList();
+        $user_list = $this->userRepository->selectBoxList();
+
+        // dd($user_list);
+
+        return view('groups.add', [
+            'user_list'    => $user_list,
+            'inst_list'     => $inst_list
+        ]);
     }
 
     public function store(GroupCreateRequest $request)

@@ -23,8 +23,8 @@
     {!! Form::open(['route' => 'groups.store', 'method' => 'post', 'class' => 'form-padrao' ]) !!}
         
         @include('templates.forms.input', ['label' => 'Nome do Grupo', 'input' => 'name', 'attributes' => ['placeholder' => 'Grupo']])
-        @include('templates.forms.input', ['label' => 'ID usuario', 'input' => 'user_id', 'attributes' => ['placeholder' => 'Usuario']])
-        @include('templates.forms.input', ['label' => 'ID instituição', 'input' => 'instituition_id', 'attributes' => ['placeholder' => 'Instituição']])
+        @include('templates.forms.select', ['label' => 'ID usuario', 'select' => 'user_id', 'values' => $user_list])
+        @include('templates.forms.select', ['label' => 'ID instituição', 'select' => 'instituition_id', 'values' => $inst_list ])
         @include('templates.forms.submit', ['input' => 'Cadastrar'])
         
     {!! Form::close() !!}

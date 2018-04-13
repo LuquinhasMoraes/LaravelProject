@@ -15,6 +15,11 @@ use App\Validators\InstituitionValidator;
  */
 class InstituitionRepositoryEloquent extends BaseRepository implements InstituitionRepository
 {
+
+    public function selectBoxList($description = 'name', $key = 'id') {
+        return $this->model->pluck($description, $key)->all();
+    }
+
     /**
      * Specify Model class name
      *
