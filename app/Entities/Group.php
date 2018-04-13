@@ -20,7 +20,7 @@ class Group extends Model implements Transformable
      *
      * @var array
      */
-    protected $fillable = ['name', 'user_id', 'instituiton_id'];
+    protected $fillable = ['name', 'instituition_id', 'user_id', 'instituiton_id'];
 
     public function owner() {
         return $this->belongsTo(User::class);

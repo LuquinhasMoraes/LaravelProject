@@ -42,13 +42,8 @@ class GroupsController extends Controller
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $groups = $this->repository->all();
 
-        if (request()->wantsJson()) {
-            return response()->json([
-                'data' => $groups,
-            ]);
-        }
-
         return view('groups.index', compact('groups'));
+        
     }
 
     public function create () {

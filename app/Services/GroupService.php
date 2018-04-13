@@ -25,7 +25,7 @@ class GroupService {
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
 
             $data = $this->repository->create($data);
-            dd($data);
+            
             return [
                 'success' => true,
                 'message' => 'Cadastrado com sucesso',

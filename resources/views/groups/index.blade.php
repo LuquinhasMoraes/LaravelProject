@@ -30,17 +30,17 @@
         </thead>
         <tbody>
             
-            {{-- @foreach ($instituitions as $instituition)
+            @foreach ($groups as $group)
                <tr>
-                    <td>{{ $instituition->id }}</td>
-                    <td>{{ $instituition->name }}</td>
+                    <td>{{ $group->id }}</td>
+                    <td>{{ $group->name }}</td>
                     <td>
-                        {!! Form::open(['route' => ['instituition.destroy', $instituition->id], 'method' => 'DELETE' ]) !!}
+                        {!! Form::open(['route' => ['groups.destroy', $group->id], 'method' => 'DELETE' ]) !!}
                             {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn-list-rm']) !!}
                         {!! Form::close() !!}
                     </td>
                 </tr>
-            @endforeach --}}
+            @endforeach
        
         </tbody>
     </table>

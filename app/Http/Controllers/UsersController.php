@@ -30,6 +30,14 @@ class UsersController extends Controller
 
         $users = $this->repository->all();
 
+        // if(count($users) <= 0) {
+        //     session()->flash('success', [
+        //         'success'   => false,
+        //         'message'   => 'Ops, nenhum registro foi encontrado.',
+        //         'type'      => 'alert-danger'  
+        //     ]);
+        // }
+
         return view('user.lista', [
             'users' => $users
         ]);
