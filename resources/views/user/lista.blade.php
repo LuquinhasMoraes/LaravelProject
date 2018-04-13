@@ -38,7 +38,7 @@
                <tr>
                     <td>{{ $user->id }}</td>
                     <td>{{ $user->name }}</td>
-                    <td>{{ $user->cpf }}</td>
+                    <td>{{ $user->mask_cpf }}</td>
                     <td>{{ $user->email }}</td>
                     <td>{{ $user->phone }}</td>
                     <td>{{ $user->birth }}</td>

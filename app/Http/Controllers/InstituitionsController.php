@@ -84,15 +84,13 @@ class InstituitionsController extends Controller
 
         try {
 
-
             $request = $this->service->store($request->all());
             
             if($request) {
                 $message = json_decode($request['message']);
-                // var_dump($message->name[0]); exit;
                 session()->flash('success', [
                     'success'   => $request['success'],
-                    'message'   => $message->name[0],
+                    'message'   => $request['message'],
                     'type'      => $request['type'],
                 ]);
 
@@ -118,23 +116,12 @@ class InstituitionsController extends Controller
     {
         $instituition = $this->repository->find($id);
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $instituition,
-            ]);
-        }
-
-        return view('instituitions.show', compact('instituition'));
+        return view('instituitions.show', [
+            'instituition' => $instituition,
+            'list_groups'  => $instituition
+        ]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $instituition = $this->repository->find($id);
@@ -142,16 +129,6 @@ class InstituitionsController extends Controller
         return view('instituitions.edit', compact('instituition'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  InstituitionUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
     public function update(InstituitionUpdateRequest $request, $id)
     {
         try {
@@ -185,14 +162,6 @@ class InstituitionsController extends Controller
         }
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
         $request = $this->service->destroy($id);

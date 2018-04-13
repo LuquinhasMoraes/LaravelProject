@@ -35,7 +35,6 @@
                     <td>{{ $instituition->id }}</td>
                     <td>{{ $instituition->name }}</td>
                     <td>
-                
                         {!! Form::open(['route' => ['instituition.destroy', $instituition->id], 'method' => 'DELETE' ]) !!}
                             {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn-list-rm']) !!}
                         {!! Form::close() !!}

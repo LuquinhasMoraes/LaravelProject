@@ -32,8 +32,6 @@ class GroupService {
                 'type'    => 'alert-success'  
             ];
 
-
-
         } catch (Exception $e ) {
 
             $message = null;
@@ -64,6 +62,23 @@ class GroupService {
             ];
 
         }
+
+    }
+
+    public function destroy($id) {
+
+        try {
+
+            return $this->repository->delete($id);
+
+        } catch (Exception $e) {
+            return [
+                'success' => false,
+                'message'   => $e->getMessage(),
+                'type'      => 'alert-danger'
+            ];
+        }
+
 
     }
 

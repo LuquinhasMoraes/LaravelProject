@@ -24,10 +24,10 @@ class InstituitionService {
     public function store ($data) {
         
         try {
-
+            
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
             $inst = $this->repository->create($data);
-
+            // dd($inst);
             return [
                 'success'   => true,
                 'message'  => 'Cadastrado com sucesso.',

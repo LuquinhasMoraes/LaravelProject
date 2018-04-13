@@ -32,11 +32,11 @@ class User extends Authenticatable
 
     }
 
-    public function getBirthAttribute() {
+    public function getMaskBirthAttribute() {
         return date('d/m/Y', strtotime($this->attributes['birth']));
     }
 
-    public function getCpfAttribute() {
+    public function getMaskCpfAttribute() {
 
         $cpf = $this->attributes['cpf'];
 

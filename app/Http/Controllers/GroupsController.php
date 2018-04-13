@@ -38,11 +38,6 @@ class GroupsController extends Controller
         $this->service                  = $service;
     }
 
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
@@ -58,8 +53,6 @@ class GroupsController extends Controller
 
         $inst_list = $this->instituitionRepository->selectBoxList();
         $user_list = $this->userRepository->selectBoxList();
-
-        // dd($user_list);
 
         return view('groups.add', [
             'user_list'    => $user_list,
@@ -91,13 +84,6 @@ class GroupsController extends Controller
         
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
         $group = $this->repository->find($id);
@@ -112,13 +98,6 @@ class GroupsController extends Controller
         return view('groups.show', compact('group'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
         $group = $this->repository->find($id);
@@ -126,16 +105,6 @@ class GroupsController extends Controller
         return view('groups.edit', compact('group'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  GroupUpdateRequest $request
-     * @param  string            $id
-     *
-     * @return Response
-     *
-     * @throws \Prettus\Validator\Exceptions\ValidatorException
-     */
     public function update(GroupUpdateRequest $request, $id)
     {
         try {
@@ -169,26 +138,30 @@ class GroupsController extends Controller
         }
     }
 
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        $deleted = $this->repository->delete($id);
 
-        if (request()->wantsJson()) {
+        try 
+        {
+            $request = $this->service->destroy($id);
 
-            return response()->json([
-                'message' => 'Group deleted.',
-                'deleted' => $deleted,
+            session()->flash('success', [
+                'success'   => $request['success'],
+                'message'   => $request['message'],
+                'type'      => $request['type']    
+            ]);
+
+            return redirect()->back();
+
+        } 
+        catch (Exception $e) 
+        {
+            session()->flash('success', [
+                'success'   => false,
+                'message'   => $e->getMessage(),
+                'type'      => 'alert-danger'    
             ]);
         }
-
-        return redirect()->back()->with('message', 'Group deleted.');
+        
     }
 }

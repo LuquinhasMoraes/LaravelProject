@@ -22,8 +22,8 @@ class UserService {
 
         try {
 
-            $usuario = $this->repository->create($data);
             $this->validator->with($data)->passesOrFail(ValidatorInterface::RULE_CREATE);
+            $usuario = $this->repository->create($data);
 
             // dd()
 
