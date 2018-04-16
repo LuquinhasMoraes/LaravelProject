@@ -4,11 +4,27 @@
 
 Aplicação de investimentos para nível de conhecimento do Framework Laravel. Os conceitos abordados no projeto são:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Rotas.
+- Database Migrations.
+- Database Seeder.
+- Database ORM com L5 Repository.
+- Validators
+- Models e Entities.
+- Arquiterura com classe Services.
+- Template Blade View.
+- Form HTML5 Collection
+- Mutators
 
+## Instalação
+
+Você pode baixar o projeto ou rodar o seguinte comando:
+
+git clone 'https://github.com/LuquinhasMoraes/LaravelProject'
+
+Crie um banco de dados local chamado "laravel" e em seguida rode o comando:
+
+php artisan migrate
+
+Para iniciar o server:
+
+php artisan serve
