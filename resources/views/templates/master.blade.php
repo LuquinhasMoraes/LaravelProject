@@ -20,5 +20,7 @@
     </article>
 
     @yield('js-view')
+    <script src="{{asset('js/jquery.js') }}"></script>
+    <script src="{{asset('js/main.js') }}"></script>
 </body>
 </html>

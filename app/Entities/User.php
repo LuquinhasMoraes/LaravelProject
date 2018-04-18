@@ -26,6 +26,13 @@ class User extends Authenticatable
      // Dados sensíveis
      protected  $hidden         = ['password', 'remember_token'];
 
+    
+    public function groups() 
+    {
+        // Relacionamento N:N
+        return $this->belongsToMany(Group::class, 'user_groups');
+    }
+
     public function setPasswordAttribute($value) {
 
         $this->attributes['password'] = env('PASSWORD_HASH') ? bcrypt($value) : $value;

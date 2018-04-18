@@ -219,6 +219,13 @@ a.forget:hover {
     color: #fff;
 }
 
+.page-info h5 small{
+    font-size: 0.7em;
+    font-weight: 400;
+    color: #fff;
+    font-style: italic;
+}
+
 .user-info {
     position: fixed;
     right: 20px;
@@ -382,4 +389,75 @@ a.forget:hover {
     line-height: 50px;
     color: #fff;
     text-transform: uppercase;
+}
+
+/* Modal */
+.overlay {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: rgba(0, 0, 0, 0.80);
+}
+.modal {
+
+    position: absolute;
+    background: #fff;
+    /* border: 1px solid #dedede; */
+    border-radius: 7px;
+    width: 800px;
+    height: auto;
+    left:50%;
+    margin-top:150px;
+    margin-left:-300px;
+    z-index: 9999;
+}
+
+.header-modal {
+    float: left;
+    width: 100%;
+    padding: 10px;
+    line-height: 40px;
+    height: 65px;
+    /* border-bottom: 1px solid #dedede; */
+    background: #742F8B;
+    border-top-left-radius: 7px;
+    border-top-right-radius: 7px;
+}
+
+.header-modal h3 {
+    font-size: 1em;
+    font-weight: 500;
+    color: #fff;
+}
+
+.body-modal {
+    float: left;
+    padding: 10px;
+    position: relative;
+    /* top: 15px; */
+    height: 145px;
+    width: 100%;
+    /* margin-top: 200px; */
+    
+}
+
+.footer-modal {
+    float: left;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 10px;
+    line-height: 20px;
+    height: 65px;
+    border-top: 1px solid #dedede;
+    background: #fff;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.footer-modal .close-modal {
+    float: left;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
 }

@@ -40,10 +40,10 @@ class GroupsController extends Controller
 
     public function index()
     {
-        $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
+        // $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $groups = $this->repository->all();
-
-        return view('groups.index', compact('groups'));
+        // dd($groups);
+        return view('groups.index', ['groups' => $groups]);
 
     }
 
@@ -87,15 +87,14 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = $this->repository->find($id);
+        $users_list = $this->userRepository->selectBoxList();
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $group,
-            ]);
-        }
-
-        return view('groups.show', compact('group'));
+        return view('groups.show', 
+            [
+                'group'         => $group, 
+                'users_list'     => $users_list
+            ]
+        );
     }
 
     public function edit($id)
@@ -161,7 +160,20 @@ class GroupsController extends Controller
                 'message'   => $e->getMessage(),
                 'type'      => 'alert-danger'    
             ]);
-        }
-        
+        }    
     }
+
+    public function userStore(Request $request, $group_id) {
+        $data = $this->service->userStore($request->all(), $group_id);
+
+        session()->flash('success', [
+            'success' => $data['success'],
+            'message' => $data['message'],
+            'type'    => $data['type'],
+            'group'   => $data['users_group']
+        ]);
+
+        return redirect()->back();
+    }
+
 }

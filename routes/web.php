@@ -31,3 +31,5 @@ Route::get('/dashboard', ['as' => 'user.dashboard', 'uses' => 'DashboardControll
  Route::resource('instituition', 'InstituitionsController');
  Route::get('groups/create', ['uses' => 'GroupsController@create']);
  Route::resource('groups', 'GroupsController');
+
+ Route::post('groups/{group_id}/user', ['as' => 'group.user.store', 'uses' => 'GroupsController@userStore' ]);
