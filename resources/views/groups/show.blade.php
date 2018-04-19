@@ -20,40 +20,35 @@
         </div>
     @endif
 
-    
-    <table class="default-data">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Integrante</th>
-                <th>Permissão</th>
-                <th>Ações</th>
-            </tr>
-        </thead>
-        <tbody>
-            
-            @foreach ($group->users as $user)
-               <tr>
-                    <td>{{ $user->id }}</td>
-                    <td>{{ $user->name }}</td>
-                    <td>{{ $user->_permision }}</td>
-                    <td>
-                        {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE' ]) !!}
-                            {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn-list-rm']) !!}
-                        {!! Form::close() !!}
-                    </td>
-                </tr>
-            @endforeach
-       
-        </tbody>
-    </table>
-
-
-    <a href=" {{ route('groups.create') }} " class="float-button" title="Novo Usuário">
-        <i class="fa fa-user-plus"></i>
-    </a>
-
+    @include('user.list', ['user_list' => $group->users ]);
 
 @endsection
+
+<a href="#" class="float-button" id="open-modal" title="Novo Usuário">
+    <i style="margin-top: 10px" class="fa fa-user-plus"></i>
+</a>
+
+<div class="overlay"></div>
+<section id="usergroup-modal" class="modal">
+    
+    <header class="header-modal">
+        <h3>Adicionar integrantes no grupo: {{ $group->name }}</h3>
+    </header>
+    
+    <article class="body-modal">
+        {!! Form::open(['route' => ['group.user.store', $group->id], 'method' => 'post', 'class' => 'form-padrao']) !!}
+        
+        @include('templates.forms.select', ['label' => 'Investidor','select' => 'user_id', 'values' => $users_list])
+        @include('templates.forms.submit', ['input' => 'Adicionar']) --}}
+        {{-- @include('templates.forms.select', ['label' => 'Investidor','select' => 'name', 'values' => $users_list]) --}}
+        {!! Form::close() !!}
+    </article>
+    
+    <footer class="footer-modal">
+        <button class="close-modal">Cancelar</button>
+    </footer>
+    {{-- <label class="modal-close" for="modal_chaves"></label> --}}
+</section>
+
 
 @include('templates/modals/modal-usergroup', $group)

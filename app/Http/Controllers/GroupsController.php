@@ -42,8 +42,9 @@ class GroupsController extends Controller
     {
         // $this->repository->pushCriteria(app('Prettus\Repository\Criteria\RequestCriteria'));
         $groups = $this->repository->all();
+        $users_list = $this->userRepository->selectBoxList();
         // dd($groups);
-        return view('groups.index', ['groups' => $groups]);
+        return view('groups.index', ['groups' => $groups, 'users_list' => $users_list]);
 
     }
 

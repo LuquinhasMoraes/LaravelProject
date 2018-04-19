@@ -104,7 +104,9 @@ class UsersController extends Controller
     {
         $user = $this->repository->find($id);
 
-        return view('users.edit', compact('user'));
+        return view('user.edit', [
+            'user' => $user
+        ]);
     }
 
     /**
@@ -121,21 +123,18 @@ class UsersController extends Controller
     {
         try {
 
-            $this->validator->with($request->all())->passesOrFail(ValidatorInterface::RULE_UPDATE);
+            
+            $response = $this->service->update($request->all(), $id);
 
-            $user = $this->repository->update($request->all(), $id);
+            session()->flash('success', [
+                'success'   => $response['success'],
+                'message'   => $response['message'],
+                'type'      => $response['type']
+            ]);
 
-            $response = [
-                'message' => 'User updated.',
-                'data'    => $user->toArray(),
-            ];
+            // return redirect()->back()->with('message', $response['message']);
+            return redirect()->back();
 
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
         } catch (ValidatorException $e) {
 
             if ($request->wantsJson()) {

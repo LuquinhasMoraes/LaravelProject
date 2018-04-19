@@ -318,25 +318,46 @@ a.forget:hover {
      line-height: 60px;
      text-align: center;
      font-size: 1.5em;
+     /* z-index: 10000; */
 
  } 
 
- .btn-list-rm {
-     float: left;
-     width: 30px;
-     height: 30px;
-     padding: 4px;
-     color: #fff;
-     background: #f74d4d;
-     border: 1px solid #e24646;
-     border-radius: 5px;
+ .float-button:hover {
+     cursor: pointer;
  }
 
- .btn-list-rm:hover {  
-    
+.btn-list-rm {
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    color: #fff;
+    background: #f74d4d;
+    border: 1px solid #e24646;
+    border-radius: 5px;
+}
+
+.btn-list-rm:hover {  
+
     cursor: pointer;
 
-  }
+}
+
+.btn-edit {
+    float: left;
+    width: 30px;
+    height: 30px;
+    padding: 4px;
+    color: #fff;
+    background: #3378f8;
+    border: 1px solid #4670e2;
+    border-radius: 5px;
+}
+
+.btn-edit:hover {  
+    cursor: pointer;
+}
+
 
 /* CSS FORM */
 
@@ -393,14 +414,15 @@ a.forget:hover {
 
 /* Modal */
 .overlay {
+    display: none;
     width: 100%;
     height: 100%;
     position: absolute;
     background: rgba(0, 0, 0, 0.80);
 }
 .modal {
-
-    position: absolute;
+    display: none;
+    position: fixed;
     background: #fff;
     /* border: 1px solid #dedede; */
     border-radius: 7px;
@@ -409,7 +431,7 @@ a.forget:hover {
     left:50%;
     margin-top:150px;
     margin-left:-300px;
-    z-index: 9999;
+    z-index: 10;
 }
 
 .header-modal {

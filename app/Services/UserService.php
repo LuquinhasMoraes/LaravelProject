@@ -65,6 +65,28 @@ class UserService {
         }
     }
 
+    public function update($request, $id)
+    {
+        try
+        {
+
+            $this->validator->with($request)->passesOrFail(ValidatorInterface::RULE_UPDATE);
+
+            $this->repository->update($request, $id);
+
+            return [
+                'success'   => true,
+                'message'   => 'Registro atualizado com sucesso.',
+                'type'      => 'alert-success'
+            ];
+        }
+        catch(Exception $e)
+        {   
+            dd($e);
+        }
+        
+    }
+
     public function delete ($data) {
 
         try {
