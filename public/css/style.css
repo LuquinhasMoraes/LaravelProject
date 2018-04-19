@@ -343,8 +343,22 @@ a.forget:hover {
 
 }
 
-.btn-edit {
+.btn-details {
     float: left;
+    /* position: absolute; */
+    width: auto;
+    height: 30px;
+    text-decoration: none;
+    padding: 7px;
+    color: #fff;
+    background: #3378f8;
+    border: 1px solid #4670e2;
+    border-radius: 5px;
+}
+
+.btn-edit {
+    float: right;
+    /* padding-left: 4px; */
     width: 30px;
     height: 30px;
     padding: 4px;

@@ -15,7 +15,7 @@
 @section('content-view')
   
     @if(session('success'))
-        <div class="alert {{ session('success')['type'] }} "> --}}
+        <div class="alert {{ session('success')['type'] }} ">
             <p>{{ session('success')['message'] }}</p>
         </div>
     @endif

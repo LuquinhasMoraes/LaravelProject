@@ -34,8 +34,18 @@ class DashboardController extends Controller
 
     public function index() {
 
-        return view('user.dashboard');
+        
+        if (session()->has('logged'))
+            return view('user.dashboard');
+        else
+            return view('user.login');
+        
+    }
 
+    public function loggout() {
+        session()->forget('logged');
+        session()->flush();
+        return redirect()->route('user.login');
     }
 
     public function auth(Request $request) {
@@ -46,8 +56,6 @@ class DashboardController extends Controller
         ];
 
            
-        
-        
         try{
             
             if ( env('PASSWORD_HASH') ) {
@@ -66,6 +74,7 @@ class DashboardController extends Controller
 
                 \Auth::login($user);
 
+                session(['logged' => true]);
 
             }
 

@@ -30,5 +30,11 @@
                 <h3>Grupos</h3>
             </a>
         </li>
+        <li style="position: absolute; bottom: 2px;">
+            <a href="{{ route('dashboard.loggout') }}">
+                <i class="fa fa-chevron-circle-left"></i>
+                <h3>Sair</h3>
+            </a>
+        </li>
     </ul>
 </nav>

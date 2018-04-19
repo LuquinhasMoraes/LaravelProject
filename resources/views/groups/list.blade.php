@@ -22,7 +22,7 @@
                             {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn-list-rm']) !!}
                         {!! Form::close() !!}
 
-                    <a href="{{ route('groups.show', $group->id) }}">Detalhes</a>
+                    <a href="{{ route('groups.show', $group->id) }}" class="btn-details">Detalhes</a>
 
                     </td>
                 </tr>

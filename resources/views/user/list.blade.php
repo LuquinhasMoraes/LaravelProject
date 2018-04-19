@@ -6,8 +6,8 @@
             <th>cpf</th>
             <th>e-mail</th>
             <th>telefone</th>
-            <th>status</th>
             <th>permissão</th>
+            <th>Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -19,8 +19,7 @@
                 <td>{{ $user->mask_cpf }}</td>
                 <td>{{ $user->email }}</td>
                 <td>{{ $user->phone }}</td>
-                <td>{{ $user->birth }}</td>
-                <td>{{ $user->status }}</td>
+                <td>{{ $user->permission }}</td>
                 <td>
                     {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE' ]) !!}
                         {!! Form::button('<i class="fa fa-trash"></i>', ['type' => 'submit', 'class' => 'btn-list-rm']) !!}
